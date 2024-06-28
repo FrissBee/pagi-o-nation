@@ -59,7 +59,7 @@
       <div class="container py-4">
         <h3>Pagi-O-Nation</h3>
         <div>
-          Download and documentation on <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a><br />
+          Download and documentation on <a href="https://github.com/FrissBee/pagi-o-nation" target="_blank" rel="noopener noreferrer">GitHub</a><br />
           Created by <a href="https://frissbee.de/" target="_blank" rel="noopener noreferrer">FrissBee.de</a>
         </div>
       </div>

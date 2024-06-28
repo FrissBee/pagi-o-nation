@@ -4,7 +4,8 @@
   // TODO: Enter your own search parameter here
   const search = 'site';
   // TODO: Enter your own URL here
-  const url = `http://localhost/pagi-o-nation/?${search}=`;
+  const url = `https://pagi-o-nation.frissbee.de/?${search}=`;
+  //   const url = `http://localhost/pagi-o-nation/?${search}=`;
   const anchor = '#anchor_2';
   const init = () => {
     handlePage();

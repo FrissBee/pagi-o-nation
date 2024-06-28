@@ -3,7 +3,7 @@
 // TODO: Change the database you want to use here
 $SQLite_or_MySQL = true;
 
-if($SQLite_or_MySQL === false) {
+if($SQLite_or_MySQL === true) {
   $db = new PDO('sqlite:./inc/pagi-o-nation.db');
   
 } else {

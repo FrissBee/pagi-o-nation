@@ -21,7 +21,7 @@
         const params = new URLSearchParams(document.location.search);
         if (!params.has('page')) {
           // Your function to display the data if the URL has no "?page=" search parameter
-          setList(json, 1, limit);
+          setList(json, 0, limit);
         } else {
           const currentPageNumber = params.get('page'); // => current page number
           // You can calculate the "offset" yourself using the page number, or use the "calcOffset()" function.
@@ -30,7 +30,7 @@
           // otherwise the pagination number would jump back to the beginning.
           DOM_pagination.setPageNumber(currentPageNumber);
           // Your function for displaying the data
-          setList(json, offset, offset + limit - 1);
+          setList(json, offset, offset + limit);
         }
         DOM_pagination.addEventListener('handle-current-page', (e) => {
           const currentPage = e.detail; // => current page number
@@ -42,12 +42,10 @@
   // Your function for displaying the data
   const setList = (data, offset, limit) => {
     let html = '<ol>';
-    data.forEach((data, index) => {
-      const idx = index + 1;
-      if (idx >= offset && idx <= limit) {
-        html += /* html */ `<li><b>ID: ${data.id}</b> | ${data.title}</li>`;
-      }
-    });
+    if (data.length < limit) limit = data.length;
+    for (let i = offset; i < limit; i++) {
+      html += `<li><b>ID: ${data[i].id}</b> | ${data[i].title}</li>`;
+    }
     html += '</ol>';
     DOM_app.innerHTML = html;
   };

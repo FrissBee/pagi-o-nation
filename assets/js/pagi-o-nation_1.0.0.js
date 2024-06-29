@@ -114,7 +114,8 @@ var __classPrivateFieldGet =
       return Number(this.getAttribute('limit-count'));
     }
     calcOffset(currentPageNumber, limit) {
-      return (Number(currentPageNumber) - 1) * limit + 1;
+      // return (Number(currentPageNumber) - 1) * limit + 1;
+      return (Number(currentPageNumber) - 1) * limit;
     }
     setTotalListCount(count) {
       this.setAttribute('total-list-count', String(count));

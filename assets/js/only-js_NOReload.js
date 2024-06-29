@@ -13,13 +13,13 @@
         // Sets the "total-list-count" attribute so that the total number of pages can be calculated.
         DOM_pagination.setTotalListCount(json.length);
         // Your function for displaying the data when the page is called up for the first time.
-        setList(json, 1, limit);
+        setList(json, 0, limit);
         DOM_pagination.addEventListener('handle-current-page', (e) => {
           const currentPage = e.detail; // => current page number
           // You can calculate the "offset" yourself using the page number, or use the "calcOffset()" function.
           const offset = DOM_pagination.calcOffset(currentPage, limit);
           // Your function for displaying the data when a pagination button is clicked
-          setList(json, offset, offset + limit - 1);
+          setList(json, offset, offset + limit);
         });
       })
       .catch((error) => console.log(error));
@@ -27,12 +27,10 @@
   // Your function for displaying the data
   const setList = (data, offset, limit) => {
     let html = '<ol>';
-    data.forEach((data, index) => {
-      const idx = index + 1;
-      if (idx >= offset && idx <= limit) {
-        html += `<li><b>ID: ${data.id}</b> | ${data.title}</li>`;
-      }
-    });
+    if (data.length < limit) limit = data.length;
+    for (let i = offset; i < limit; i++) {
+      html += `<li><b>ID: ${data[i].id}</b> | ${data[i].title}</li>`;
+    }
     html += '</ol>';
     DOM_app.innerHTML = html;
   };

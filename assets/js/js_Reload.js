@@ -5,8 +5,7 @@
   // TODO: Enter your own search parameter here
   const search = 'page';
   // TODO: Enter your own URL here
-  const url = `https://pagi-o-nation.frissbee.de/?${search}=`;
-  //   const url = `http://localhost/pagi-o-nation/?${search}=`;
+  const url = `http://localhost/pagi-o-nation/?${search}=`;
   const anchor = '#anchor_1';
   let offset = 1;
   const init = () => {
@@ -43,8 +42,9 @@
   // Your function for displaying the data
   const setList = (data, offset, limit) => {
     let html = '<ol>';
-    data.forEach((data) => {
-      if (data.id >= offset && data.id <= limit) {
+    data.forEach((data, index) => {
+      const idx = index + 1;
+      if (idx >= offset && idx <= limit) {
         html += /* html */ `<li><b>ID: ${data.id}</b> | ${data.title}</li>`;
       }
     });

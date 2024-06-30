@@ -13,10 +13,19 @@ if($SQLite_or_MySQL === true) {
 $received_data = json_decode(file_get_contents("php://input"));
 
 if ($received_data->action == 'load-data') {
+  $limit = $received_data->limit;
+  $offset = $received_data->offset;
+  $fetchTotalListCount = $received_data->fetchTotalListCount;
+
+  if ($fetchTotalListCount === true) {
+    $query = "SELECT count(id) AS count FROM images";
+    $statement = $db->query($query);
+    $result['count'] = $statement->fetch()[0];
+  }
   
-  $query = "SELECT * FROM images ORDER BY id";
+  $query = "SELECT * FROM images ORDER BY id LIMIT $limit OFFSET $offset";
   $statement = $db->query($query);
-  $result = $statement->fetchAll();
+  $result['data'] = $statement->fetchAll();
 
   echo json_encode($result);
   $db = null;

@@ -5,7 +5,7 @@
   // TODO: Enter your own search parameter here
   const search = 'page';
   // TODO: Enter your own URL here
-  const url = `http://localhost/pagi-o-nation/?${search}=`;
+  const url = `http://localhost/your-path-to-the-repo/pagi-o-nation/?${search}=`;
   const anchor = '#anchor_1';
   let offset = 1;
   const init = () => {

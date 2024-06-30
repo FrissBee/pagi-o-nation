@@ -13,7 +13,7 @@
     />
 
     <!-- 1. Implement the "Pagi-O-Nation"-File -->
-    <script src="./assets/js/pagi-o-nation_1.0.0.js" defer></script>
+    <script src="./assets/js/pagi-o-nation_1.1.0.js" defer></script>
 
     <!-- 2. Implement your JS-Files -->
     <script src="./assets/js/only-js_NOReload.js" defer></script>
@@ -161,7 +161,6 @@
       <!-- 3. Implement the "pagi-o-nation"-Tag withe the attributes -->
       <pagi-o-nation
         class="demo_6"
-        limit-count="8"
         active-bg="#b6ab15"
         active-color="#000000"
         inactive-bg="#2e2e2e"

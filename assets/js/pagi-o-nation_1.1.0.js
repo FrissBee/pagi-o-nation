@@ -110,18 +110,26 @@ var __classPrivateFieldGet =
     goToURL(url) {
       window.location.href = url;
     }
+    calcOffset(currentPageNumber, limit) {
+      return (Number(currentPageNumber) - 1) * limit;
+    }
     getLimitCount() {
       return Number(this.getAttribute('limit-count'));
     }
-    calcOffset(currentPageNumber, limit) {
-      // return (Number(currentPageNumber) - 1) * limit + 1;
-      return (Number(currentPageNumber) - 1) * limit;
+    setLimitCount(limit) {
+      this.setAttribute('limit-count', String(limit));
     }
     setTotalListCount(count) {
       this.setAttribute('total-list-count', String(count));
     }
+    getTotalListCount() {
+      return Number(this.getAttribute('total-list-count'));
+    }
     setPageNumber(pageNumber) {
       this.setAttribute('page-number', String(pageNumber));
+    }
+    getPageNumber() {
+      return Number(this.getAttribute('page-number'));
     }
   }
   (_PagiONation_root = new WeakMap()),

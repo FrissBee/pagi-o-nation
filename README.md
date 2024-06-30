@@ -14,7 +14,7 @@ This repo contains an SQLite database (see: `inc\pagi-o-nation.db`) to start the
 
 - Download or clone the repo. Use XAMPP (or an alternative) and open it with staring Apache Server.
 - Enter your URL in `assets\js\js_Reload.js` and `assets\js\php_Reload.js`;
-- Open `index.php` in your Browser.
+- Open `index.php` in your Browser at `http://localhost/your-path-to-the-repo/pagi-o-nation/`.
 
 ### With MySQL
 
@@ -24,8 +24,8 @@ If you prefer to work with a MySQL database, proceed as follows:
 - Create a database and import the file: `inc\pagi-o-nation.sql`;
 - Change your access data in `inc\db_connection.inc.php`.
 - Set the variable `$SQLite_or_MySQL` to `true` in the files `inc\api.php` and `index.php` or delete the corresponding source code;
-- Enter your URL in `assets\js\js_Reload.js` and `assets\js\php_Reload.js`;
-- Open `index.php` in your Browser.
+- Enter your URL in `assets\js\js_Reload.js` and `assets\js\php_Reload.js`.
+- Open `index.php` in your Browser at `http://localhost/your-path-to-the-repo/pagi-o-nation/`.
 
 # Add Pagi-O-Nation to your project
 
@@ -64,7 +64,7 @@ The HTML/PHP File
     <!-- 1. Implement the "Pagi-O-Nation"-File -->
     <script src="./assets/js/pagi-o-nation_1.0.0.js" defer></script>
 
-    <!-- 2. Implement your JS-Files -->
+    <!-- 2. Implement your JS-File -->
     <script src="./assets/js/my-javascript-file.js" defer></script>
   </head>
   <body>
@@ -98,7 +98,7 @@ const fetchData = async (limit) => {
       DOM_pagination.setTotalListCount(json.length);
 
       // Your function for displaying the data when the page is called up for the first time.
-      setList(json, 1, limit);
+      setList(json, 0, limit);
 
       // Adding the EventListener with the "handle-current-page" event for clicking through the pages
       DOM_pagination.addEventListener('handle-current-page', (e) => {
@@ -108,7 +108,7 @@ const fetchData = async (limit) => {
         const offset = DOM_pagination.calcOffset(currentPage, limit);
 
         // Your function for displaying the data when a pagination button is clicked
-        setList(json, offset, offset + limit - 1);
+        setList(json, offset, offset + limit);
       });
     })
     .catch((error) => console.log(error));
@@ -123,9 +123,9 @@ fetchData(limit);
 
 #### Necessary attributes
 
-- `limit-count` => **Must be set in the `<pagi-o-nation></pagi-o-nation>` tag** (not via JavaScript). Determines how much data should be displayed on the page.
-- `total-list-count` => Total number of data. Is required to calculate the number of page buttons. Can be set via a Pagi-O-Nation function (see below).
-- `page-number` => Number of the page number. Can be set via a Pagi-O-Nation function (see below).
+- `limit-count` => Determines how much data should be displayed on the page.
+- `total-list-count` => Total number of data. Is required to calculate the number of page buttons.
+- `page-number` => Number of the pagination button.
 
 #### Optional attributes (for design)
 
@@ -136,13 +136,16 @@ fetchData(limit);
 
 # Functions
 
-The names of the functions should be self-explanatory. See the JavaScript files with the examples for more information.
+See the JavaScript files with the examples for more information.
 
-- `goToURL(url: string): void`
-- `getLimitCount(): number`
-- `calcOffset(currentPageNumber: number | string, limit: number): number`
-- `setTotalListCount(count: number | string): void`
-- `setPageNumber(pageNumber: string | number): void`
+- `goToURL(url: string): void` => redirects to the specified page
+- `calcOffset(currentPageNumber: number | string, limit: number): number` => calculate the "offset"
+- `setLimitCount(): void` => set the attribute `limit-count`
+- `getLimitCount(): number` => get the attribute `limit-count`
+- `setTotalListCount(count: number | string): void` => set the attribute
+- `getTotalListCount(): number` => get the attribute
+- `setPageNumber(pageNumber: string | number): void` => set the attribute `page-number`
+- `getPageNumber(): number` => get the attribute `page-number`
 
 # CSS
 
@@ -155,7 +158,7 @@ You can design:
 - `li-element-pagination`
 - `div-element-pagination`
 
-Example with `::part()`:
+Example:
 
 ```css
 pagi-o-nation.demo_2::part(nav-element-pagination) {

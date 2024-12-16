@@ -13,7 +13,7 @@
     />
 
     <!-- 1. Implement the "Pagi-O-Nation"-File -->
-    <script src="./assets/js/pagi-o-nation_1.1.0.js" defer></script>
+    <script src="./assets/js/pagi-o-nation_1.1.1.js" defer></script>
 
     <!-- 2. Implement your JS-Files -->
     <script src="./assets/js/only-js_NOReload.js" defer></script>
